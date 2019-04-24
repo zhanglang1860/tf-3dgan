@@ -15,8 +15,8 @@ Global Parameters
 '''
 n_epochs   = 10000
 batch_size = 32
-g_lr       = 0.0025
-d_lr       = 0.00001
+g_lr       = 5e-3   #0.0025
+d_lr       = 5e-3   #0.00001
 beta       = 0.5
 d_thresh   = 0.8
 z_size     = 200
