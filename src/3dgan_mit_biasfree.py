@@ -182,7 +182,8 @@ def trainGAN(is_dummy=False, checkpoint=None):
         else:
             volumes = d.getAll(obj=obj, train=True, is_local=is_local, obj_ratio=obj_ratio)
             print 'Using ' + obj + ' Data'
-        volumes = volumes[...,np.newaxis].astype(np.float)
+
+        volumes = volumes[...,np.newaxis].astype(np.float32)
         # volumes *= 2.0
         # volumes -= 1.0
 
