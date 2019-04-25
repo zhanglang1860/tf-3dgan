@@ -236,7 +236,7 @@ def testGAN(trained_model_path=None, n_batches=40):
     weights = initialiseWeights()
 
     z_vector = tf.placeholder(shape=[batch_size,z_size],dtype=tf.float32) 
-    net_g_test = generator(z_vector, phase_train=True, reuse=True)
+    net_g_test = generator(z_vector, phase_train=False, reuse=False)
 
     vis = visdom.Visdom()
 
@@ -249,7 +249,7 @@ def testGAN(trained_model_path=None, n_batches=40):
 
         # output generated chairs
         for i in range(n_batches):
-            next_sigma = float(raw_input())
+            next_sigma = 0.89#float(raw_input())
             z_sample = np.random.normal(0, next_sigma, size=[batch_size, z_size]).astype(np.float32)
             g_objects = sess.run(net_g_test,feed_dict={z_vector:z_sample})
             id_ch = np.random.randint(0, batch_size, 4)
