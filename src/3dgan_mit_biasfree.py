@@ -231,7 +231,7 @@ def trainGAN(is_dummy=False, checkpoint=None):
                 saver.save(sess, save_path = model_directory + '/biasfree_' + str(epoch) + '.cptk')
 
 
-def testGAN(trained_model_path=None, n_batches=40):
+def testGAN(trained_model_path=None, n_batches=10):
 
     weights = initialiseWeights()
 
@@ -249,7 +249,7 @@ def testGAN(trained_model_path=None, n_batches=40):
 
         # output generated chairs
         for i in range(n_batches):
-            next_sigma = 0.89#float(raw_input())
+            next_sigma = 0.5#float(raw_input())
             z_sample = np.random.normal(0, next_sigma, size=[batch_size, z_size]).astype(np.float32)
             g_objects = sess.run(net_g_test,feed_dict={z_vector:z_sample})
             id_ch = np.random.randint(0, batch_size, 4)
